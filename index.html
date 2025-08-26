@@ -57,6 +57,7 @@
         <h1 id="welcome-message">Загрузка...</h1>
         <p>Это простое веб-приложение, запущенное внутри Telegram.</p>
         <button id="close-button">Закрыть</button>
+         <button id="new-button">OPEN LINK</button>
     </div>
 
     <script>
@@ -70,6 +71,8 @@
         const welcomeMessage = document.getElementById('welcome-message');
         const closeButton = document.getElementById('close-button');
 
+        const newButton = document.getElementById('new-button');
+
         // Пытаемся получить данные пользователя
         const user = tg.initDataUnsafe?.user;
 
@@ -81,6 +84,10 @@
             welcomeMessage.textContent = 'Привет, Незнакомец!';
         }
 
+        newButton.addEventListener('click', () => {
+            window.Telegram.WebApp.openLink('https://example.com');
+        });
+        
         // Обработчик для кнопки закрытия
         closeButton.addEventListener('click', () => {
             // Метод для закрытия Mini App
